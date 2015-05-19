@@ -22,7 +22,7 @@ class ListingController < ApplicationController
 			query = address + ', ' + city + ', ' + state + ' ' + zip
 			apiKey = 'AIzaSyDi-6WsDLYNZtAR6YPnVGXEkTywjDZ8YVw'
 			apiEndpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="
-			url = apiEndpoint + query + "&key=" + apiKey + ":443"
+			url = apiEndpoint + query + "&key=" + apiKey 
 			encoded_url = URI.encode(url)
 			
 			response = HTTParty.get(URI.parse(encoded_url) )
@@ -52,8 +52,8 @@ class ListingController < ApplicationController
 	
 	locations.each do |location, coords|
 		locationsHTML += "<h2>" + location + "</h2>"
-		locationsHTML += "<h3>Latitude:" + coords[0] + "</h3>"
-		locationsHTML += "<h3>Longitude:" + coords[1] + "</h3><br>"
+		locationsHTML += "<h3>Latitude:" + coords[0].to_s + "</h3>"
+		locationsHTML += "<h3>Longitude:" + coords[1].to_s + "</h3><br>"
 		
 	end
 	
